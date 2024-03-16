@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity, Image, Dimensions } from "react-native";
 import { Category } from "../../models";
+import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 
@@ -10,8 +11,12 @@ type categoryItemProps = {
 };
 
 function index({ item }: categoryItemProps) {
+
+  const navigation = useNavigation()
+
   return (
-    <TouchableOpacity
+    // {category: item} vererek kategorilerden hangisine basıldıysa, CategoryDetails ekranına bu bilgiyi yollayacağız.
+    <TouchableOpacity onPress={()=> navigation.navigate("CategoryDetails", {category: item})}
       style={{
         width: width * 0.25,
         height: width * 0.25,

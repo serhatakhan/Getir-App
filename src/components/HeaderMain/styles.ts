@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     headerOne: {
         height: height * 0.064,
-        width: "79%",
+        width: "80%",
         backgroundColor: "white",
         flexDirection:"row",
         alignItems: "center",
@@ -30,12 +30,12 @@ const styles = StyleSheet.create({
         borderLeftWidth: 3
     },
     headerTwo: {
-        width: "21%",
+        width: "20%",
         height: height * 0.064,
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        paddingLeft: 22
+        marginLeft: 16
     }
 });
 
