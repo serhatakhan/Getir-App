@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator, ScrollView } from "react-native";
 import { Product } from "../../models";
 import ImageCarousel from "../../components/ImageCarousel"
+import DetailBox from "../../components/DetailBox"
+import DetailProperty from "../../components/DetailProperty"
+import CardButton from "../../components/CardButton"
 
 function Index(props) {
   const [product, setProduct] = useState<Product>();
@@ -18,8 +21,21 @@ function Index(props) {
   }
 
   return (
-    <View>
-      <ImageCarousel images={product?.images} />
+    // burada en dıştaki view'a background:red verince gördük ki yüksekliği ortada bir yerde bitiyor.
+    // böyle olunca da absolute ve bottom:0 verdiğimiz CardButton bileşenimiz en alta gidemiyor, sayfanın ortasında kalıyordu. çünkü o an sayfanın yüksekliği o kadardı.
+    // flex:1 vererek tüm ekranı kaplamasını sağladık. böylece button bileşeni en alta gidebildi.
+    <View style={{flex: 1}}>
+      <ScrollView>
+        <ImageCarousel images={product?.images} />
+
+        <DetailBox price={product.fiyat} name={product.name} quantity={product.miktar} />
+
+        <Text style={{paddingHorizontal: 15, paddingVertical: 14, color: "#808b99", fontWeight: "600"}}>Detaylar</Text>
+
+        <DetailProperty />
+      </ScrollView>
+
+      <CardButton />
     </View>
   );
 }

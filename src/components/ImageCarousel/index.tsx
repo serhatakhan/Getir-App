@@ -42,7 +42,8 @@ function index({ images }: { images: string[] }) {
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
-        snapToInterval={width}
+        // yukarıda yazdığımız width'i verdik ki resimler arası geçişte resimlerin ortasında kalma olmasın
+        snapToInterval={width * 0.5}
         viewabilityConfig={viewConfigRef.current}
         onViewableItemsChanged={onViewRef.current}
       ></FlatList>
