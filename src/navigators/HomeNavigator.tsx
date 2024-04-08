@@ -19,7 +19,8 @@ function MyStack( {navigation, route} ) {
   // tabBar navigasyonumuzu gösterme dedik. Göstermek istemediğimiz bottomları böyle tanımladık.
   // name'ini alıyoruz, navigation.setOptions ile bu yolu izliyoruz. 
   // * Yukarıda 2 prop aldık {navigation, route}. Bunları da exportlarken verdik MyStack'e.
-  const tabHiddenRoutes = ["ProductDetails"]
+  // YANİ DİYORUZ Kİ EĞER SEN BU ARRAY'İN İÇİNDEKİ BİR SCREEN İSEN BOTTOM TAB NAVİGATOR'U GÖSTERME !!
+  const tabHiddenRoutes = ["ProductDetails", "CartScreen"]
   useEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route)
     if (tabHiddenRoutes.includes(routeName)){
