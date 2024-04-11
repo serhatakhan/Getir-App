@@ -35,7 +35,7 @@ function Index() {
         {/* index===0 ? 10 : 13 --> prop olarak gelen index 0'a eşitse büyüklüğü 10 olsun dedik */}
         <Text
           style={{
-            color: index === 0 ? "black" : "#687482",
+            color: index === 0 ? "#4e4e4e" : "#687482",
             fontSize: index === 0 ? 12 : 13,
             fontWeight: index === 0 ? "400" : "500",
           }}>

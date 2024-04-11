@@ -3,15 +3,18 @@ import { View, Text, TouchableOpacity, Image, Dimensions } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 import { Product } from '../../models';
 import { useNavigation } from '@react-navigation/native';
+import { connect } from 'react-redux';
+import * as actions from "../../redux/actions/cartActions"; //tüm aksiyonları import et
 
 const {width, height} = Dimensions.get("window")
 
 // propslar için type tanımla
 type productItemType = {
-    item: Product
+    item: Product;
+    addItemToCart: (a:Product)=> void
 }
 
-function index( {item}:productItemType ) {
+function index( {item, addItemToCart}:productItemType ) {
 
   const navigation = useNavigation()
 
@@ -31,11 +34,18 @@ function index( {item}:productItemType ) {
         <Text style={{fontWeight: "600", fontSize: 13, marginTop: 6}}>{item.name}</Text>
         <Text style={{color: "#747990", fontSize: 12, fontWeight: "600", marginTop: 4}}>{item.miktar}</Text>
 
-        <View style={{width: 30, height: 30, shadowRadius: 3.8, shadowOpacity: 0.15, shadowColor: "#5c3ebc", borderWidth: 0.4, borderColor: "lightgrey", backgroundColor: "white", position: "absolute", right: -6, top: -6, borderRadius: 8, alignItems: "center", justifyContent: "center"}}>
+        <TouchableOpacity onPress={()=> {addItemToCart(item)}} style={{width: 30, height: 30, shadowRadius: 3.8, shadowOpacity: 0.15, shadowColor: "#5c3ebc", borderWidth: 0.4, borderColor: "lightgrey", backgroundColor: "white", position: "absolute", right: -6, top: -6, borderRadius: 8, alignItems: "center", justifyContent: "center"}}>
             <Entypo name="plus" size={22} color="#5d3ebd" />
-        </View>
+        </TouchableOpacity>
     </TouchableOpacity>
   )
 }
 
-export default index
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        addItemToCart: (product:Product) =>
+            dispatch(actions.addToCart({quantity:1, product}))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(index)
