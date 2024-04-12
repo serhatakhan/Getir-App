@@ -27,5 +27,6 @@ This project contains the **React Native** mobile application version of the Get
 
 ## Preview
 
+![EkranKayd2024-04-1212 34 33-ezgif com-video-to-gif-converter](https://github.com/serhatakhan/Getir-App/assets/147662915/0fa72b22-60a9-4413-99b1-2faf57f93346)
 
 
